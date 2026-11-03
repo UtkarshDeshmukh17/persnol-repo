@@ -36,8 +36,8 @@ h1,h2,h3{font-family:var(--display);margin:0;line-height:1.05;letter-spacing:-.0
 .hero{padding:clamp(3.5rem,10vw,7.5rem) 0 clamp(3rem,7vw,5.5rem)}
 .hero h1{font-size:clamp(3.4rem,11.5vw,8.5rem);font-weight:800;color:var(--silver)}
 .hero h1 span{display:block;overflow:hidden}
-.hero h1 b{display:block;font-weight:inherit;animation:rise 1s cubic-bezier(.2,.8,.2,1) 1.2s both}
-.hero h1 span:nth-child(2) b{animation-delay:1.34s}
+.hero h1 b{display:block;font-weight:inherit;animation:rise 1s cubic-bezier(.2,.8,.2,1) 1.75s both}
+.hero h1 span:nth-child(2) b{animation-delay:1.89s}
 .hero h1 i{font-style:normal;color:var(--red)}
 @keyframes rise{from{transform:translateY(105%)}to{transform:none}}
 .role{margin:2rem 0 0;font:500 clamp(1.15rem,2.4vw,1.5rem)/1.4 var(--display);max-width:34ch}
@@ -109,15 +109,15 @@ h2::before{content:"";position:absolute;top:0;left:0;width:2.25rem;height:3px;ba
 .social svg{width:1.35rem;height:1.35rem;fill:currentColor}
 footer{padding:2rem 0 3rem;color:var(--silver-dim);font-size:.9rem;border-top:1px solid var(--line)}
 /* motion */
-.curtain{position:fixed;inset:0;z-index:100;background:var(--bg);display:grid;place-items:center;animation:lift .95s cubic-bezier(.77,0,.18,1) 1.05s forwards}
-.curtain::after{content:"";position:absolute;left:0;right:0;bottom:0;height:6px;background:var(--red);transform-origin:left;animation:fill .9s cubic-bezier(.77,0,.18,1) both}
-.curtain span{font:800 clamp(2rem,6vw,3.5rem) var(--display);letter-spacing:-.02em;animation:fade .6s ease .1s both}
+.curtain{position:fixed;inset:0;z-index:100;background:var(--bg);display:grid;place-items:center;animation:lift .95s cubic-bezier(.77,0,.18,1) 1.6s forwards}
+.curtain::after{content:"";position:absolute;left:0;right:0;bottom:0;height:6px;background:var(--red);transform-origin:left;animation:fill 1.5s cubic-bezier(.77,0,.18,1) both}
+.curtain span{font:800 clamp(2rem,6vw,3.5rem) var(--display);letter-spacing:-.02em;animation:fade .7s ease .45s both}
 .curtain i{font-style:normal;color:var(--red)}
 @keyframes lift{to{transform:translateY(-100%);visibility:hidden}}
 @keyframes fill{from{transform:scaleX(0)}}
 @keyframes fade{from{opacity:0;transform:translateY(14px)}}
 .hero .role,.hero .lead,.hero .cta{animation:fade .9s cubic-bezier(.2,.8,.2,1) both}
-.hero .role{animation-delay:1.7s}.hero .lead{animation-delay:1.8s}.hero .cta{animation-delay:1.9s}
+.hero .role{animation-delay:2.25s}.hero .lead{animation-delay:2.35s}.hero .cta{animation-delay:2.45s}
 .hero h1{transform:translateY(calc(var(--sy,0)*-.1px));will-change:transform}
 .prog{position:fixed;top:env(safe-area-inset-top,0px);left:0;width:100%;height:3px;background:var(--red);transform:scaleX(var(--sp,0));transform-origin:left;z-index:50}
 .bar a.on{color:var(--silver);box-shadow:0 2px 0 var(--red)}
@@ -235,9 +235,8 @@ html.menu-open{overflow:hidden}
 /* cover image behind the hero */
 .hero{position:relative;isolation:isolate}
 .hero::before,.hero::after{content:"";position:absolute;z-index:-1;left:50%;width:100vw;margin-left:-50vw;top:calc(-5rem - env(safe-area-inset-top,0px));bottom:0}
-.hero::before{background:url(cover.webp) 43% 100%/cover no-repeat;animation:cover 1.8s ease .9s both}
+.hero::before{background:url(cover.webp) 43% 100%/cover no-repeat}
 .hero::after{background:linear-gradient(180deg,rgba(8,8,8,.6) 0,rgba(8,8,8,.2) 45%,rgba(8,8,8,.55) 78%,var(--bg) 100%),linear-gradient(90deg,rgba(8,8,8,.7) 0,rgba(8,8,8,0) 70%)}
-@keyframes cover{from{opacity:0}}
 @media(max-width:700px){
 .hero::after{background:linear-gradient(180deg,rgba(8,8,8,.72) 0,rgba(8,8,8,.45) 50%,rgba(8,8,8,.7) 80%,var(--bg) 100%)}
 }
@@ -257,6 +256,53 @@ html.menu-open{overflow:hidden}
 .tl .note{font-size:.92rem}
 }
 @media(hover:none){.tl>li:hover h3{transform:none}}
+
+/* glass navigation */
+.gnav{position:fixed;z-index:60;top:calc(.75rem + env(safe-area-inset-top,0px));left:0;right:0;margin-inline:auto;width:min(calc(100vw - 1.5rem),980px);height:3.5rem;display:flex;align-items:center;gap:.5rem;padding:0 .5rem 0 1.25rem}
+.gnav::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:999px;background:linear-gradient(135deg,rgba(255,255,255,.13),rgba(255,255,255,.03)),rgba(14,14,14,.38);-webkit-backdrop-filter:blur(18px) saturate(160%);backdrop-filter:blur(18px) saturate(160%);border:1px solid rgba(255,255,255,.15);box-shadow:0 8px 32px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.2)}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.gnav::before,.gsearch{background:rgba(16,16,16,.94)}}
+.gnav .mark{margin-right:auto}
+.gnav .burger{position:relative;top:auto;right:auto;width:2.5rem;height:2.5rem;background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;border:1px solid rgba(255,255,255,.15);border-radius:50%}
+.gs-btn{display:flex;align-items:center;justify-content:center;gap:.5rem;width:2.5rem;height:2.5rem;padding:0;border-radius:999px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.07);color:var(--silver);font:500 .92rem var(--body);cursor:pointer;transition:border-color .2s,background .2s}
+.gs-btn:hover,.gs-btn[aria-expanded="true"]{border-color:var(--red);background:rgba(212,20,43,.16)}
+.gs-btn span,.gs-btn kbd{display:none}
+.gs-btn kbd{font:500 .75rem var(--body);color:var(--silver-dim);border:1px solid rgba(255,255,255,.18);border-radius:5px;padding:.05rem .4rem}
+@media(min-width:820px){
+.bar nav{position:static;inset:auto;flex-direction:row;align-items:center;justify-content:flex-start;gap:.1rem;padding:0;background:none;opacity:1;visibility:visible;transition:none}
+.bar nav a{font:500 .95rem var(--body);letter-spacing:0;opacity:1;transform:none;padding:.5rem .8rem;border-radius:999px;transition:color .2s,background .2s}
+.bar nav a:hover{background:rgba(255,255,255,.08);color:var(--silver)}
+.bar nav a.on{box-shadow:none;background:rgba(212,20,43,.2);color:#fff}
+.bar nav a.on::after{content:none}
+.gnav .burger{display:none}
+.gs-btn{width:auto;padding:0 .8rem 0 .95rem;margin-left:.4rem}
+.gs-btn span,.gs-btn kbd{display:inline}
+}
+.gsearch{position:absolute;top:calc(100% + .6rem);left:0;right:0;border-radius:1.5rem;overflow:hidden;background:linear-gradient(135deg,rgba(255,255,255,.12),rgba(255,255,255,.03)),rgba(14,14,14,.55);-webkit-backdrop-filter:blur(22px) saturate(160%);backdrop-filter:blur(22px) saturate(160%);border:1px solid rgba(255,255,255,.15);box-shadow:0 18px 48px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.18);animation:fade .35s cubic-bezier(.2,.8,.2,1) both}
+.gsearch[hidden]{display:none}
+.gs-field{display:flex;align-items:center;gap:.7rem;padding:.95rem 1.2rem;border-bottom:1px solid rgba(255,255,255,.1);color:var(--silver-dim)}
+.gs-field input{flex:1;min-width:0;background:none;border:0;outline:0;color:var(--silver);font:500 1rem var(--body);-webkit-appearance:none;appearance:none}
+.gs-field input::placeholder{color:var(--silver-dim)}
+.gs-field input::-webkit-search-cancel-button{-webkit-appearance:none}
+.gs-field:focus-within{color:var(--red)}
+.gs-res{max-height:min(60svh,26rem);overflow:auto;padding:.5rem}
+.gs-i{display:block;width:100%;text-align:left;background:none;border:0;border-radius:.9rem;padding:.7rem .85rem;color:var(--silver);cursor:pointer;font:inherit}
+.gs-i:hover,.gs-i:focus-visible{background:rgba(255,255,255,.08)}
+.gs-t{display:flex;align-items:baseline;gap:.6rem;font:700 1rem var(--display)}
+.gs-s{margin-left:auto;color:var(--silver-dim);font:500 .8rem var(--body);white-space:nowrap}
+.gs-p{display:block;margin-top:.2rem;color:var(--silver-dim);font-size:.9rem;line-height:1.45}
+.gs-res mark{background:rgba(212,20,43,.4);color:#fff;border-radius:3px;padding:0 .12em}
+.gs-note{margin:0;padding:.6rem .85rem .3rem;color:var(--silver-dim);font-size:.9rem}
+.gs-jump{display:flex;flex-wrap:wrap;gap:.5rem;padding:.4rem .85rem .8rem}
+.gs-jump button{border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.05);color:var(--silver);border-radius:999px;padding:.4rem .9rem;font:500 .92rem var(--body);cursor:pointer;transition:border-color .2s,background .2s}
+.gs-jump button:hover{border-color:var(--red);background:rgba(212,20,43,.16)}
+.hit{outline:2px solid var(--red);outline-offset:10px;animation:hit 2.4s ease both}
+@keyframes hit{0%,70%{outline-color:var(--red)}100%{outline-color:transparent}}
+
+/* opening screen: mountains behind the name */
+.curtain{overflow:hidden}
+.curtain::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,8,.45),rgba(8,8,8,.7)),url(cover.webp) 43% 100%/cover no-repeat;animation:zoom 2s cubic-bezier(.2,.8,.2,1) both}
+.curtain span{position:relative;z-index:1;font-size:clamp(2.1rem,8.5vw,5rem);text-shadow:0 2px 24px rgba(0,0,0,.55)}
+@keyframes zoom{from{opacity:0;transform:scale(1.15)}to{opacity:1;transform:none}}
 </style>
 </head>
 <body>
@@ -264,8 +310,16 @@ html.menu-open{overflow:hidden}
 <div class="prog" aria-hidden="true"></div>
 <div class="wrap">
   <header class="bar">
-    <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
-    <nav id="menu" aria-label="Main"><a href="#about">About</a><a href="#journey">Journey</a><a href="#skills">Skills</a><a href="#work">Projects</a><a href="#blogs">Blogs</a><a href="#contact">Contact</a></nav>
+    <div class="gnav">
+      <a class="mark" href="#top">Utkarsh<i>.</i></a>
+      <nav id="menu" aria-label="Main"><a href="#about">About</a><a href="#journey">Journey</a><a href="#skills">Skills</a><a href="#work">Projects</a><a href="#blogs">Blogs</a><a href="#contact">Contact</a></nav>
+      <button class="gs-btn" type="button" aria-label="Search this site" aria-expanded="false" aria-controls="gsearch"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search</span><kbd>/</kbd></button>
+      <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+      <div class="gsearch" id="gsearch" role="dialog" aria-label="Search this site" hidden>
+        <label class="gs-field"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="gq" type="search" placeholder="Search skills, projects, experience" autocomplete="off" spellcheck="false" aria-label="Search"></label>
+        <div class="gs-res" id="gres"></div>
+      </div>
+    </div>
   </header>
 
   <main id="top">
@@ -455,7 +509,7 @@ const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
 d.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
  const h=a.getAttribute('href'),t=h==='#top'?null:d.querySelector(h);
  if(h!=='#top'&&!t)return;e.preventDefault();
- const to=t?t.getBoundingClientRect().top+scrollY:0,from=scrollY;
+ const to=t?t.getBoundingClientRect().top+scrollY-24:0,from=scrollY;
  if(rm){scrollTo(0,to);return}
  const T=1100,s=performance.now();
  (function f(n){const p=Math.min(1,(n-s)/T);scrollTo(0,from+(to-from)*ease(p));if(p<1)requestAnimationFrame(f)})(s);
@@ -468,6 +522,70 @@ const setMenu=o=>{r.classList.toggle('menu-open',o);mb.setAttribute('aria-expand
 mb.addEventListener('click',()=>setMenu(!r.classList.contains('menu-open')));
 mn.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
 addEventListener('keydown',e=>{if(e.key==='Escape'&&r.classList.contains('menu-open')){setMenu(false);mb.focus()}});
+})();
+</script>
+<script>
+(()=>{
+const d=document,r=d.documentElement,rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const btn=d.querySelector('.gs-btn'),pan=d.getElementById('gsearch'),q=d.getElementById('gq'),res=d.getElementById('gres'),burger=d.querySelector('.burger');
+const clean=t=>t.replace(/\s+/g,' ').trim(),idx=[];
+const add=(el,sec,title,text)=>{if(el&&title){title=clean(title);text=clean(text);idx.push({el,sec,title,text,tl:title.toLowerCase(),low:(title+' '+text).toLowerCase()})}};
+const one=(sel,sec,title)=>{const e=d.querySelector(sel);if(e)add(e,sec,title,e.textContent)};
+one('.hero .role','Home','Role');one('.hero .lead','Home','Intro');
+d.querySelectorAll('.about p').forEach(p=>add(p,'About','About me',p.textContent));
+d.querySelectorAll('.tl>li').forEach(li=>{const h=li.querySelector('h3');add(li,'Journey',h?h.textContent:'',li.textContent)});
+d.querySelectorAll('.skills>div').forEach(c=>{const h=c.querySelector('h3');add(c,'Skills',h?h.textContent:'',[...c.querySelectorAll('.chips span')].map(x=>x.textContent).join(', '))});
+d.querySelectorAll('#work .card').forEach(c=>{const h=c.querySelector('h3');add(c,'Projects',h?h.textContent:'',c.textContent)});
+d.querySelectorAll('#blogs .card').forEach(c=>{const h=c.querySelector('h3');add(c,'Blogs',h?h.textContent:'',c.textContent)});
+one('#contact','Contact','Contact');
+const jumps=[['About','about'],['Journey','journey'],['Skills','skills'],['Projects','work'],['Blogs','blogs'],['Contact','contact']];
+const esc=t=>t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+const hl=(txt,terms)=>{const f=d.createDocumentFragment(),re=new RegExp('('+terms.map(esc).join('|')+')','ig');txt.split(re).forEach((p,i)=>{if(i%2){const m=d.createElement('mark');m.textContent=p;f.appendChild(m)}else f.appendChild(d.createTextNode(p))});return f};
+const mk=(tag,cls,txt)=>{const e=d.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e};
+let isOpen=false;
+const setOpen=(o,refocus)=>{isOpen=o;pan.hidden=!o;btn.setAttribute('aria-expanded',o);if(o){if(r.classList.contains('menu-open'))burger.click();q.value='';show('');q.focus()}else if(refocus)btn.focus()};
+const go=(el,hit)=>{setOpen(false,false);scrollTo({top:Math.max(0,el.getBoundingClientRect().top+scrollY-(hit?96:24)),behavior:rm?'auto':'smooth'});if(hit){el.classList.add('hit');setTimeout(()=>el.classList.remove('hit'),2400)}};
+function show(v){
+ res.textContent='';
+ const terms=v.toLowerCase().split(/\s+/).filter(Boolean);
+ if(!terms.length){
+  res.appendChild(mk('p','gs-note','Jump to a section, or type a skill, company or project.'));
+  const j=mk('div','gs-jump');
+  jumps.forEach(([n,id])=>{const b=mk('button',null,n);b.type='button';b.onclick=()=>go(d.getElementById(id),false);j.appendChild(b)});
+  res.appendChild(j);return;
+ }
+ const hits=idx.map(e=>terms.every(t=>e.low.includes(t))?{e,s:terms.reduce((a,t)=>a+(e.tl.includes(t)?3:1),0)}:null).filter(Boolean).sort((a,b)=>b.s-a.s).slice(0,8);
+ if(!hits.length){res.appendChild(mk('p','gs-note','No match for “'+v.trim()+'”. Try a skill like Python, a company, or a project name.'));return}
+ hits.forEach(({e})=>{
+  const b=mk('button','gs-i');b.type='button';
+  const t=mk('span','gs-t');t.appendChild(hl(e.title,terms));t.appendChild(mk('span','gs-s',e.sec));
+  const low=e.text.toLowerCase();let k=Math.min(...terms.map(x=>{const i=low.indexOf(x);return i<0?1e9:i}));if(k===1e9)k=0;
+  const st=Math.max(0,k-40),sn=(st>0?'…':'')+e.text.slice(st,st+120)+(st+120<e.text.length?'…':'');
+  const p=mk('span','gs-p');p.appendChild(hl(sn,terms));
+  b.append(t,p);b.onclick=()=>go(e.el,true);res.appendChild(b);
+ });
+}
+btn.addEventListener('click',()=>setOpen(!isOpen,true));
+burger.addEventListener('click',()=>{if(isOpen)setOpen(false,false)});
+q.addEventListener('input',()=>show(q.value));
+q.addEventListener('keydown',e=>{
+ if(e.key==='Enter'){const f=res.querySelector('.gs-i');if(f)f.click()}
+ if(e.key==='ArrowDown'){const f=res.querySelector('button');if(f){e.preventDefault();f.focus()}}
+});
+res.addEventListener('keydown',e=>{
+ if(e.key!=='ArrowDown'&&e.key!=='ArrowUp')return;
+ const items=[...res.querySelectorAll('button')],i=items.indexOf(d.activeElement);
+ e.preventDefault();
+ if(e.key==='ArrowDown')(items[i+1]||items[i]).focus();
+ else if(i<=0)q.focus();else items[i-1].focus();
+});
+d.addEventListener('keydown',e=>{
+ if(e.key==='Escape'&&isOpen){setOpen(false,true);return}
+ const typing=/^(INPUT|TEXTAREA|SELECT)$/.test(d.activeElement.tagName);
+ if(e.key==='/'&&!typing&&!e.metaKey&&!e.ctrlKey){e.preventDefault();setOpen(true)}
+ if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();setOpen(!isOpen,true)}
+});
+d.addEventListener('click',e=>{if(isOpen&&!e.target.closest('.gnav'))setOpen(false,false)});
 })();
 </script>
 </body>
