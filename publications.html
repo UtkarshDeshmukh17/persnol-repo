@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Publications – Utkarsh Deshmukh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Nunito:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@500;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="prog" aria-hidden="true"></div>
+<div class="wrap">
+  <header class="bar">
+    <div class="gnav">
+      <a class="mark" href="index.html">Utkarsh<i>.</i></a>
+      <nav id="menu" aria-label="Main"><a href="index.html">Home</a><a href="index.html#about">About</a><a href="index.html#journey">Journey</a><a href="index.html#skills">Skills</a><a href="index.html#work">Projects</a><a class="on" href="publications.html" aria-current="page">Publications</a><a href="index.html#contact">Contact</a></nav>
+      <button class="gs-btn" type="button" aria-label="Search this site" aria-expanded="false" aria-controls="gsearch"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search</span><kbd>/</kbd></button>
+      <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+      <div class="gsearch" id="gsearch" role="dialog" aria-label="Search this site" hidden>
+        <label class="gs-field"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="gq" type="search" placeholder="Search skills, projects, experience" autocomplete="off" spellcheck="false" aria-label="Search"></label>
+        <div class="gs-res" id="gres"></div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="pub-hero">
+      <h1>Publications<i>.</i></h1>
+      <p>Things I write and research: practical notes from delivery and security work, and the research behind them.</p>
+      <div class="pub-chips">
+        <a class="btn main" href="#blogs">Blogs</a>
+        <a class="btn alt" href="#research">Research</a>
+      </div>
+    </div>
+
+    <section id="blogs">
+      <div class="head">
+        <h2>Blogs</h2>
+        <p class="pub-note">Short, practical write-ups. Swipe or drag the row to browse.</p>
+        <div class="posts">
+          <div class="card">
+            <h3>Running 12–14 workstreams at once</h3>
+            <span class="tag">Coming soon</span>
+            <p>What I learned coordinating patent packages across inventors and legal teams.</p>
+          </div>
+          <div class="card">
+            <h3>From telemetry to detection</h3>
+            <span class="tag">Coming soon</span>
+            <p>How automated triage pipelines feed detection logic and cut false positives.</p>
+          </div>
+          <div class="card">
+            <h3>Dashboards people actually read</h3>
+            <span class="tag">Coming soon</span>
+            <p>Turning KPI data into clear status updates for non-technical teams.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="head">
+        <h2>Research</h2>
+        <p class="pub-note">Projects and studies, from data to results.</p>
+        <!-- TODO: replace these placeholder cards with your own research titles, tags and summaries -->
+        <div class="posts">
+          <div class="card">
+            <h3>Telemetry-based malware triage</h3>
+            <span class="tag">Coming soon</span>
+            <p>Using endpoint telemetry to automate triage and sharpen detection logic.</p>
+          </div>
+          <div class="card">
+            <h3>Interpretable crime risk models</h3>
+            <span class="tag">Coming soon</span>
+            <p>Supervised models on socioeconomic features, with outputs people can explain.</p>
+          </div>
+          <div class="card">
+            <h3>Integrity in blockchain voting</h3>
+            <span class="tag">Coming soon</span>
+            <p>Transaction flow, immutability and integrity checks in a voting prototype.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2026 Utkarsh S. Deshmukh</footer>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
